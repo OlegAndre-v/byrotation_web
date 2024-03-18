@@ -1,0 +1,10 @@
+class Url:
+    BASE_PAGE = 'https://byrotation.com/'
+    NEW_IN_PAGE_PATH = 'new-in'
+    DESIGNERS_PAGE_PATH = 'designers'
+    COLLECTIONS_PAGE_PATH = 'collections'
+    DRESSES_PAGE_PATH = 'category/women/dresses'
+    CLOTHING_PAGE_PATH = 'category/women'
+    ACCESSORIES_PAGE_PATH = 'category/women/accessories'
+    MEN_PAGE_PATH = 'category/men'
+    RESALE_PAGE_PATH = 'collections/resale'

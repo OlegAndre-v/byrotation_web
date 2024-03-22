@@ -33,6 +33,13 @@ class BasePage:
         WebDriverWait(self.driver, time).until(ec.presence_of_element_located(locator))
         return self.driver.find_element(*locator)
 
+    @allure.step('Ждем изменения текста в эллементе')
+    def wait_for_text_to_change(self, locator, time=15):
+        old_text = self.driver.find_element(*locator).text
+        WebDriverWait(self.driver, time).until(
+            lambda driver: driver.find_element(*locator).text != old_text
+        )
+
     @allure.step('Нажимаем "Enter" по локатору')
     def send_enter(self, locator):
         self.find_element(locator).send_keys(Keys.ENTER)
@@ -60,11 +67,13 @@ class BasePage:
         WebDriverWait(shadow_root, time).until(
             ec.visibility_of_element_located(BasePageLocators.ACCEPT_ALL_COOKIES_BUTTON)).click()
 
-    @allure.step('Принятие куков')
+    @allure.step('Берем текст из кук')
     def get_text_cookies(self, time=10):
         shadow_host = self.driver.find_element(By.ID, "usercentrics-root")
         shadow_root = self.driver.execute_script("return arguments[0].shadowRoot", shadow_host)
         return WebDriverWait(shadow_root, time).until(
             ec.visibility_of_element_located(BasePageLocators.ACCEPT_ALL_COOKIES_BUTTON)).text
 
-    #driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    @allure.step('Переход к футеру')
+    def go_to_footer(self):
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")

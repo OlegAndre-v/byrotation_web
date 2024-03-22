@@ -65,3 +65,5 @@ class BasePage:
         shadow_root = self.driver.execute_script("return arguments[0].shadowRoot", shadow_host)
         return WebDriverWait(shadow_root, time).until(
             ec.visibility_of_element_located(BasePageLocators.ACCEPT_ALL_COOKIES_BUTTON)).text
+
+    #driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")

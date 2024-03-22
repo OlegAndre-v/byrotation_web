@@ -29,7 +29,8 @@ class BasePage:
         return WebDriverWait(self.driver, time).until(ec.visibility_of_element_located(locator)).text
 
     @allure.step('Ищем эллемент по локатору')
-    def find_element(self, locator):
+    def find_element(self, locator, time=15):
+        WebDriverWait(self.driver, time).until(ec.presence_of_element_located(locator))
         return self.driver.find_element(*locator)
 
     @allure.step('Нажимаем "Enter" по локатору')

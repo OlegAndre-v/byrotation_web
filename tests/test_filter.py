@@ -24,9 +24,8 @@ class TestFilter:
     @allure.title('Тест фильтра "Product Type"')
     def test_product_type_filter(self, driver, new_in_page):
         new_in_page.open()
-        new_in_page.accept_cookies()
         new_in_page.click_element(FilterPageLocators.PRODUCT_TYPE_BUTTON)
         new_in_page.click_element(FilterPageLocators.BAGS_CHECKBOX)
-        new_in_page.find_element(FilterPageLocators.BAG_CONTAIN)
+        new_in_page.accept_cookies()
         assert ('Bags' == new_in_page.get_text(FilterPageLocators.BAGS_LABEL)
                 and 'Bag' in new_in_page.get_text(SearchPageLocators.ITEM_INFO))

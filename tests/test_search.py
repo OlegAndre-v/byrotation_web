@@ -16,7 +16,7 @@ class TestSearch:
         main_page.accept_cookies()
         main_page.send_input(MainPageLocators.SEARCH_INPUT, brand)
         main_page.send_enter(MainPageLocators.SEARCH_INPUT)
-        assert main_page.get_text(SearchPageLocators.ITEM_INFO) == brand
+        assert main_page.get_text(SearchPageLocators.BRAND_NAME) == brand
 
     @allure.title('Тест поиска по типу продукта')
     @pytest.mark.parametrize('product_type', [TDSearch.PRODUCT_TYPE_1, TDSearch.PRODUCT_TYPE_2, TDSearch.PRODUCT_TYPE_3])
